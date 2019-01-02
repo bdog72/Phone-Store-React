@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-
 import { storeProducts, detailProduct } from './data';
-
 const ProductContext = React.createContext();
 
 class ProductProvider extends Component {
@@ -11,9 +9,9 @@ class ProductProvider extends Component {
     cart: storeProducts,
     modalOpen: false,
     modalProduct: detailProduct,
-    cartSubTotal: 0,
-    cartTax: 0,
-    cartTotal: 0
+    cartSubTotal: 10,
+    cartTax: 20,
+    cartTotal: 30
   };
 
   componentDidMount() {
@@ -54,7 +52,7 @@ class ProductProvider extends Component {
 
     this.setState(
       () => {
-        return { products: tempProducts, cart: [...this.state.cart] };
+        return { products: tempProducts, cart: [...this.state.cart, product] };
       },
       () => {
         console.log(this.state);
